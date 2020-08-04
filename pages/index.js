@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Header from '../components/header'
+import { withTranslation } from '../i18n'
 
 const Home = () => (
     <>
@@ -9,6 +10,10 @@ const Home = () => (
         </Head>
         <Header/>
     </>
-);
+)
 
-export default Home;
+Home.getInitialProps = async () => ({
+    namespacesRequired: ['common', 'header'],
+})
+
+export default withTranslation('common')(Home)
