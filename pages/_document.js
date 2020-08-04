@@ -35,6 +35,21 @@ export default class MyDocument extends Document {
                     <meta name="referrer" content="never" />
                 </Head>
                 <body>
+                    <style global jsx>{`
+                          * {
+                            margin: 0;
+                            padding: 0;
+                          }
+                          html {
+                            font-size: 16px;
+                          }
+                          body {
+                            font-size: 1rem;
+                            -webkit-font-smoothing: antialiased;
+                            box-sizing: border-box;
+                            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                          }
+                    `}</style>
                     <Main />
                     <NextScript />
                 </body>

@@ -6,7 +6,7 @@ const Comment = () => (
             <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
             <title>琴吹め / Yume Kotobuki🍭 - comment</title>
         </Head>
-        <div>ss</div>
+        <div>coming soon...</div>
     </>
 );
 
