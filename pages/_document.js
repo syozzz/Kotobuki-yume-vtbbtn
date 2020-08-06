@@ -45,10 +45,12 @@ export default class MyDocument extends Document {
                           }
                           body {
                             font-size: 1rem;
+                            background: #ffffff;
                             -webkit-font-smoothing: antialiased;
                             box-sizing: border-box;
                             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
                           }
+                          
                     `}</style>
                     <Main />
                     <NextScript />

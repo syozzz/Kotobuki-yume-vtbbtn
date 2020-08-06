@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import { withTranslation } from '../i18n'
-import {ContentBox} from "../components/common";
+import { ContentBox } from '../components/common'
 
-const Comment = () => (
+const About = () => (
     <>
         <Head>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-            <title>琴吹め / Yume Kotobuki🍭 - comment</title>
+            <title>琴吹め / Yume Kotobuki🍭 - about</title>
         </Head>
         <ContentBox>
             comming soon...
@@ -14,8 +14,8 @@ const Comment = () => (
     </>
 )
 
-Comment.getInitialProps = async () => ({
+About.getInitialProps = async () => ({
     namespacesRequired: ['common', 'header']
 })
 
-export default withTranslation('common')(Comment)
+export default withTranslation('common')(About)

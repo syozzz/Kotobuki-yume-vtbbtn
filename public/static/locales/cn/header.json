@@ -1,5 +1,9 @@
 {
-  "title": "琴吹梦\uD83C\uDF6D按钮",
+  "title": "琴吹梦按钮",
   "language": "语言",
-  "about": "关于"
+  "repo": "代码仓库",
+  "about": "关于",
+  "home": "主页",
+  "comment":"评论",
+  "gallery": "图集"
 }

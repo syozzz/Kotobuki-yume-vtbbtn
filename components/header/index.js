@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { withTranslation, i18n } from '../../i18n'
 import { Popover, Spacer, Link } from '@zeit-ui/react'
 import styles from '../../styles/header.module.css'
+import Emojify from 'react-emojione'
 
 const TopBox = styled.div`
   height: 60px;
@@ -21,37 +22,34 @@ const TopBox = styled.div`
     transition: color 0.2s ease 0s;
   }
 `
+
 const languageChangeHandler = (value) => {
     i18n.changeLanguage(value)
-    return false
 }
 
 const popContent = () => (
     <div>
-        <Link href="#" className={styles.topLink} onClick={() => {languageChangeHandler('cn')}}>简体中文</Link>
+        <span className={styles.topLink} onClick={() => {languageChangeHandler('cn')}}>简体中文</span>
         <Spacer y={.25} />
-        <Link href="#" className={styles.topLink} onClick={() => {languageChangeHandler('en')}}>English</Link>
+        <span className={styles.topLink} onClick={() => {languageChangeHandler('en')}}>English</span>
         <Spacer y={.25} />
-        <Link href="#" className={styles.topLink} onClick={() => {languageChangeHandler('jp')}}>日本語</Link>
+        <span className={styles.topLink} onClick={() => {languageChangeHandler('jp')}}>日本語</span>
     </div>
 )
 
-const Header = ({ t }) => {
-
-    return (
-        <>
-            <TopBox>
-                <div className="title-box">
-                    {t('title')}
-                </div>
-                <div className="tools-box">
-                    <Popover trigger="hover"  className={styles.topLink} content={popContent}>{t('language')}</Popover>
-                    <Link className={styles.topLink} href="#">{t('about')}</Link>
-                </div>
-            </TopBox>
-        </>
-    )
-
-}
+const Header = ({ t }) => (
+    <TopBox>
+        <div className="title-box">
+            <Emojify style={{height: 16, width: 16}}>
+                <span>:lollipop:</span>
+            </Emojify>
+            {t('title')}
+        </div>
+        <div className="tools-box">
+            <Popover trigger="hover"  className={styles.topLink} content={popContent}>{t('language')}</Popover>
+            <Link target="_blank" className={styles.topLink} href="https://github.com/syozzz/Kotobuki-yume-vtnbtn">{t('repo')}</Link>
+        </div>
+    </TopBox>
+)
 
 export default withTranslation('header')(Header)

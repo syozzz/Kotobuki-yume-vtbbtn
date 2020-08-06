@@ -1,5 +1,9 @@
 {
   "title": "en",
   "language": "language",
-  "about": "about"
+  "repo": "GitHub",
+  "about": "about",
+  "home": "home",
+  "comment":"comment",
+  "gallery": "gallery"
 }

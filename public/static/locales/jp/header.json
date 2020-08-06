@@ -1,5 +1,9 @@
 {
   "title": "jp",
   "language": "言語",
-  "about": "について"
+  "repo": "GitHub",
+  "about": "について",
+  "home": "主页",
+  "comment":"评论",
+  "gallery": "图集"
 }

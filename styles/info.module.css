@@ -1,0 +1,11 @@
+
+.avatarBox {
+    text-align: right;
+}
+
+.descBox {
+    padding-left: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
