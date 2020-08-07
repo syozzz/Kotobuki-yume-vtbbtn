@@ -1,8 +1,9 @@
 import { withTranslation } from '../../i18n'
-import { Grid, Row, Col, Avatar, Text } from '@zeit-ui/react'
+import { Grid, Row, Col, Avatar, Text, Button } from '@zeit-ui/react'
 import styles from '../../styles/info.module.css'
 import { Twitter, Youtube, Tv } from '@zeit-ui/react-icons'
 import styled from 'styled-components'
+import NotifyBox from '../notify'
 
 const ALink = styled.a`
   text-decoration: none;
@@ -12,10 +13,12 @@ const ALink = styled.a`
     position: relative;
     bottom: 2px;
   }
-`;
+`
+
+
 
 const Info = ({ t }) => (
-    <Grid.Container gap={2} justify="center">
+    <Grid.Container justify="center">
         <Grid xs={24} sm={12}>
             <Row justify="center">
                 <Col span={11} className={styles.avatarBox}>
@@ -58,8 +61,12 @@ const Info = ({ t }) => (
                 </Col>
             </Row>
         </Grid>
-        <Grid xs={24} sm={12}>
-
+        <Grid xs={24} sm={10}>
+            <Row justify="center">
+                <Col span={18}>
+                    <NotifyBox/>
+                </Col>
+            </Row>
         </Grid>
     </Grid.Container>
 )

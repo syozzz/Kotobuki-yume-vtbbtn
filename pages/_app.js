@@ -2,7 +2,16 @@ import App from 'next/app'
 import { appWithTranslation } from '../i18n'
 import { StickyContainer, Sticky } from 'react-sticky'
 import Header from '../components/header'
-import Tabs from "../components/tabs"
+import Tabs from '../components/tabs'
+import Router from 'next/router'
+import NProgress from 'nprogress'
+import '../styles/nprogress.css'
+
+Router.onRouteChangeStart = url => {
+    NProgress.start();
+};
+Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
 
 class MyApp extends App {
 

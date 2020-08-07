@@ -42,6 +42,7 @@ export default class MyDocument extends Document {
                           }
                           html {
                             font-size: 16px;
+                            box-sizing: border-box;
                           }
                           body {
                             font-size: 1rem;
@@ -50,7 +51,35 @@ export default class MyDocument extends Document {
                             box-sizing: border-box;
                             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
                           }
-                          
+                          ::-webkit-scrollbar 
+                          {
+                            width: 7px;
+                            height: 10px;
+                          }
+        
+                          ::-webkit-scrollbar-track 
+                          {
+                            -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+                            border-radius: 0px;
+                            background: white;
+                          }
+        
+                          ::-webkit-scrollbar-thumb 
+                          {
+                            border-radius: 5px;
+                            -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+                            background: #c1c1c1;
+                          }
+        
+                          ::-webkit-scrollbar-thumb:hover
+                          {
+                            border-radius: 5px;
+                            -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+                            background: #c1c1c1;
+                          }
+                          ::-webkit-scrollbar-corner {
+                            background-color: #fff;
+                          }
                     `}</style>
                     <Main />
                     <NextScript />

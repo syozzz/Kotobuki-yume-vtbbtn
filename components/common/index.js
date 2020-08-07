@@ -5,5 +5,4 @@ export const ContentBox = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   margin-top: 50px;
-  padding: 5px;
 `;

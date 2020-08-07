@@ -9,3 +9,10 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
+@media screen and (max-width: 649px) {
+    .notifyBox {
+        margin-top: 25px;
+    }
+}
+

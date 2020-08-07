@@ -6,7 +6,7 @@ const About = () => (
     <>
         <Head>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-            <title>琴吹め / Yume Kotobuki🍭 - about</title>
+            <title>琴吹め / Yume Kotobuki 🍭 - about</title>
         </Head>
         <ContentBox>
             comming soon...

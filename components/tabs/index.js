@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { withTranslation } from '../../i18n'
 import { Tabs } from '@zeit-ui/react'
-import Router from 'next/router'
+import Router, { withRouter } from 'next/router'
 
 const Nav = styled.div`
   width: 100%;
@@ -45,11 +45,11 @@ const Nav = styled.div`
   }
 `;
 
-const MyTabs = ({ t }) => (
+const MyTabs = ({ t, router }) => (
     <Nav>
         <div className="nav-container">
-            <Tabs initialValue="/" hideDivider onChange={(val) => {
-                Router.push(val);
+            <Tabs initialValue={router.pathname} hideDivider onChange={(val) => {
+                Router.push(val)
             }}>
                 <Tabs.Item label={t('home')} value="/"/>
                 <Tabs.Item label={t('comment')} value="/comment"/>
@@ -60,4 +60,4 @@ const MyTabs = ({ t }) => (
     </Nav>
 )
 
-export default withTranslation('header')(MyTabs)
+export default withRouter(withTranslation('header')(MyTabs))
