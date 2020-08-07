@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { withTranslation } from '../i18n'
-import {ContentBox} from "../components/common";
+import {ContentBox} from "../components/common"
 
 const Gallery = () => (
     <>
