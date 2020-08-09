@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { withTranslation, i18n } from '../../i18n'
 import { Popover, Spacer, Link } from '@zeit-ui/react'
 import styles from '../../styles/header.module.css'
-import Emojify from 'react-emojione'
+import Head from "next/head";
 
 const TopBox = styled.div`
   height: 60px;
@@ -15,6 +15,18 @@ const TopBox = styled.div`
   
   .title-box {
     flex: 1 1;
+    position: relative;
+    
+    .icon {
+      display: inline-block;
+      position: relative;
+      top: 3px;
+      padding-right: 3px;
+      width: 16px;
+      height: 16px;
+      background: url("https://pic.imgdb.cn/item/5f2f9d3614195aa594c92bcf.jpg") no-repeat center center;
+      background-size: contain;
+    }
   }
   
   .tools-box {
@@ -39,11 +51,11 @@ const popContent = () => (
 
 const Header = ({ t }) => (
     <TopBox>
+        <Head>
+            <script key="valine-call" type="text/javascript" src="/scripts/MiniValine.min.js"></script>
+        </Head>
         <div className="title-box">
-            <Emojify style={{height: 16, width: 16}}>
-                <span>:lollipop:</span>
-            </Emojify>
-            {t('title')}
+            <span className="icon"></span>{t('title')}
         </div>
         <div className="tools-box">
             <Popover trigger="hover"  className={styles.topLink} content={popContent}>{t('language')}</Popover>

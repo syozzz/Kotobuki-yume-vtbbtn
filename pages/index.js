@@ -3,6 +3,7 @@ import { withTranslation } from '../i18n'
 import { ContentBox } from '../components/common'
 import Info from '../components/info'
 import Btn from '../components/btn'
+import Footer from '../components/footer'
 
 const Home = () => (
     <>
@@ -14,6 +15,7 @@ const Home = () => (
             <Info/>
         </ContentBox>
         <Btn/>
+        <Footer/>
     </>
 )
 

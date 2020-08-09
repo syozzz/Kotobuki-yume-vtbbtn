@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
             <html>
                 <Head>
                     <meta name="referrer" content="never" />
-                    <link rel="icon" href="/favicon.ico" />
+                    <link rel="icon" href="https://pic.imgdb.cn/item/5f2f9d3614195aa594c92bcf.jpg" />
                 </Head>
                 <body>
                     <style global jsx>{`
