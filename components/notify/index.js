@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-import {Text, Tooltip} from '@zeit-ui/react'
 import styles from "../../styles/info.module.css";
-import {Clock} from "@zeit-ui/react-icons";
+import {
+    ClockCircleOutlined
+} from '@ant-design/icons'
 
 const NotifyBox = styled.div`
   color: rgba(0,0,0,.6);
@@ -60,16 +61,14 @@ const NotifyBox = styled.div`
 
 const Notify = () => (
     <div className={styles.notifyBox}>
-        <Text h4>
-            <span style={{position: 'relative', top: '3px', paddingRight: '3px'}}>
-                <Clock size={18} color="#1da1f2"/>
+        <h4>
+            <span style={{position: 'relative', top: '1px', paddingRight: '3px'}}>
+                <ClockCircleOutlined style={{fontSize: '18px', color: '#1da1f2'}}/>
             </span>直播动态(beta)
-        </Text>
-        <Tooltip type="dark" text="直播标题xxxxxx" placement="right">
-            <NotifyBox>
-                【youtube】正在直播...
-            </NotifyBox>
-        </Tooltip>
+        </h4>
+        <NotifyBox>
+            【youtube】正在直播...
+        </NotifyBox>
         <NotifyBox>
             【bilibili】未开播
         </NotifyBox>

@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 import { withTranslation } from '../../i18n'
-import { Tabs } from '@zeit-ui/react'
+import { Tabs } from 'antd'
 import Router, { withRouter } from 'next/router'
+
+const { TabPane } = Tabs
 
 const Nav = styled.div`
   width: 100%;
@@ -26,21 +28,13 @@ const Nav = styled.div`
     max-width: 1000px;
     margin: 0 auto;
     padding-left: 5px;
-  
-    .tabs {
-      width: 100%;
-      
-      header .tab {
-        font-size: 0.875rem;
-        
-        &:after {
-          bottom: -8px;
-        }
-      }
-      
-      .content {
-        padding-top: 0 !important;
-      }
+    
+    .ant-tabs-top>.ant-tabs-nav:before {
+      border-bottom: none;
+    }
+    
+    .ant-tabs-top>.ant-tabs-nav {
+      margin: 0;  
     }
   }
 `;
@@ -48,13 +42,14 @@ const Nav = styled.div`
 const MyTabs = ({ t, router }) => (
     <Nav>
         <div className="nav-container">
-            <Tabs initialValue={router.pathname} hideDivider onChange={(val) => {
+            <Tabs defaultActiveKey={router.pathname}  onChange={(val) => {
                 Router.push(val)
             }}>
-                <Tabs.Item label={t('home')} value="/"/>
-                <Tabs.Item label={t('comment')} value="/comment"/>
-                <Tabs.Item label={t('gallery')} value="/gallery"/>
-                <Tabs.Item label={t('about')} value="/about"/>
+                <TabPane tab={t('home')} key="/"/>
+                <TabPane tab={t('comment')} key="/comment"/>
+                <TabPane tab={t('gallery')} key="/gallery"/>
+                <TabPane tab={t('about')} key="/about"/>
+                <TabPane tab={t('todos')} key="/roadmap"/>
             </Tabs>
         </div>
     </Nav>

@@ -4,6 +4,7 @@
   "repo": "代码仓库",
   "about": "关于",
   "home": "主页",
-  "comment":"评论",
-  "gallery": "图集"
+  "comment":"留言板",
+  "gallery": "图集",
+  "todos": "todos"
 }

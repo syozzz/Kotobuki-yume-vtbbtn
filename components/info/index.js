@@ -1,9 +1,24 @@
 import { withTranslation } from '../../i18n'
-import { Grid, Row, Col, Avatar, Text, Button } from '@zeit-ui/react'
 import styles from '../../styles/info.module.css'
-import { Twitter, Youtube, Tv } from '@zeit-ui/react-icons'
 import styled from 'styled-components'
+import { Row, Col, Avatar, Typography } from 'antd'
+import {
+    TwitterOutlined,
+    YoutubeOutlined
+} from '@ant-design/icons'
 import NotifyBox from '../notify'
+
+const { Text } = Typography
+
+const BiliIcon = styled.span`
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url("/images/bilibili-fill.png") no-repeat center center;
+  background-size: contain;
+  position: absolute;
+  top: -1px;
+`
 
 const ALink = styled.a`
   text-decoration: none;
@@ -15,60 +30,50 @@ const ALink = styled.a`
   }
 `
 
-
-
 const Info = ({ t }) => (
-    <Grid.Container justify="center">
-        <Grid xs={24} sm={12}>
+    <Row justify="center">
+        <Col xs={24} sm={12}>
             <Row justify="center">
                 <Col span={11} className={styles.avatarBox}>
-                    <Avatar src="https://pic.imgdb.cn/item/5f26c4b214195aa594996403.jpg" size="large" />
+                    <Avatar src="https://pic.imgdb.cn/item/5f26c4b214195aa594996403.jpg" size={88} />
                 </Col>
                 <Col span={13}>
                     <div className={styles.descBox}>
-                        <Text h4>{t('name')}</Text>
-                        <Text p size={14}>
-                            {t('alias_key')}：
-                            {t('alias_del') ?
-                                <Text span del>
-                                    {`${t('alias_del')||''} `}
-                                </Text> : null
-                            }
-                            <Text span>
+                        <h4>{t('name')}</h4>
+                            <p style={{fontSize: '14px'}}>
+                                {t('alias_key')}：
+                                {t('alias_del') ?
+                                    <Text  delete>
+                                        {`${t('alias_del')||''} `}
+                                    </Text> : null
+                                }
+                                <span>
                                 {t('alias')}
-                            </Text>
-                        </Text>
-                        <Text p size={14}>
-                            {t('birthday_key')}：
-                            {t('birthday')}
-                        </Text>
-                        <Text p style={{marginTop: '3px'}}>
-                            <ALink href="https://twitter.com/KotobukiYume" target="_blank">
-                                <Twitter size={18} color="#1da1f2" />
-                            </ALink>
-                            <ALink href="https://www.youtube.com/channel/UCezfmwKc2B8dtVIAgRHXrKQ" target="_blank">
-                                <Youtube size={18} color="red" />
-                            </ALink>
-                            <ALink className="top" href="https://space.bilibili.com/442426299" target="_blank">
-                                <Tv size={18} color="#1D97CE" />
-                            </ALink>
-                        </Text>
+                            </span>
+                            </p>
+                            <p style={{fontSize: '14px'}}>
+                                {t('birthday_key')}：
+                                {t('birthday')}
+                            </p>
+                            <p style={{marginTop: '3px', position: 'relative'}}>
+                                <ALink href="https://twitter.com/KotobukiYume" target="_blank">
+                                    <TwitterOutlined style={{color: '#1da1f2', fontSize: '20px'}}/>
+                                </ALink>
+                                <ALink href="https://www.youtube.com/channel/UCezfmwKc2B8dtVIAgRHXrKQ" target="_blank">
+                                    <YoutubeOutlined style={{color: 'red', fontSize: '20px'}}/>
+                                </ALink>
+                                <ALink className="top" href="https://space.bilibili.com/442426299" target="_blank">
+                                    <BiliIcon/>
+                                </ALink>
+                            </p>
                     </div>
                 </Col>
             </Row>
-            <Row justify="center">
-                <Col span={8}>
-                </Col>
-            </Row>
-        </Grid>
-        <Grid xs={24} sm={10}>
-            <Row justify="center">
-                <Col span={18}>
-                    <NotifyBox/>
-                </Col>
-            </Row>
-        </Grid>
-    </Grid.Container>
+        </Col>
+        <Col xs={24} sm={10} offset={2}>
+           <NotifyBox/>
+        </Col>
+    </Row>
 )
 
 export default withTranslation('info')(Info)

@@ -1,11 +1,7 @@
 import Head from 'next/head'
 import { withTranslation } from '../i18n'
 import { ContentBox } from "../components/common"
-import dynamic from 'next/dynamic'
 
-const DynamicComponentWithNoSSR = dynamic(import('../components/dynamiccomment'), {
-    ssr: false
-})
 
 const Comment = () => {
 
@@ -15,11 +11,8 @@ const Comment = () => {
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
                 <title>琴吹め / Yume Kotobuki 🍭 - comment</title>
             </Head>
-            <ContentBox>
-                占位 页面说明或者肥梦图片
-            </ContentBox>
-            <ContentBox>
-                <DynamicComponentWithNoSSR/>
+            <ContentBox style={{paddingLeft: '10px'}}>
+                评论功能重构为留言板，开发进行中
             </ContentBox>
         </>
     )

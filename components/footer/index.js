@@ -4,6 +4,10 @@ import styled from 'styled-components'
 const Text = styled.div`
   font-size: 14px;
   margin-top: 5px;
+  
+  @media(max-width: 999px) {
+    padding: 0 10px;
+  }
 `
 
 const Footer = () => (

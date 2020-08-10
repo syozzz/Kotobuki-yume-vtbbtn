@@ -6,8 +6,7 @@ import Tabs from '../components/tabs'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import '../styles/nprogress.css'
-import { ZeitProvider, CssBaseline } from '@zeit-ui/react'
-
+import 'antd/dist/antd.min.css'
 
 Router.onRouteChangeStart = url => {
     NProgress.start();
@@ -30,28 +29,25 @@ class MyApp extends App {
     render() {
         const { Component, pageProps } = this.props
         return (
-            <ZeitProvider>
-                <CssBaseline />
-                <StickyContainer>
-                    <Header/>
-                    <Sticky topOffset={60}>
-                        {({
-                              style
-                          }) => (
-                            <div
-                                style={{
-                                    ...style,
-                                    zIndex: 1000,
-                                    background: '#ffffff'
-                                }}
-                            >
-                                <Tabs style={{...style}}/>
-                            </div>
-                        )}
-                    </Sticky>
-                    <Component {...pageProps} />
-                </StickyContainer>
-            </ZeitProvider>
+            <StickyContainer>
+                <Header/>
+                <Sticky topOffset={60}>
+                    {({
+                          style
+                      }) => (
+                        <div
+                            style={{
+                                ...style,
+                                zIndex: 1000,
+                                background: '#ffffff'
+                            }}
+                        >
+                            <Tabs style={{...style}}/>
+                        </div>
+                    )}
+                </Sticky>
+                <Component {...pageProps} />
+            </StickyContainer>
         )
     }
 }

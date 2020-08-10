@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { withTranslation } from '../i18n'
-import {ContentBox} from "../components/common"
+import { ContentBox } from "../components/common"
 import Gallery from 'react-photo-gallery'
 import Carousel, { Modal, ModalGateway } from 'react-images'
 import { photos } from '../components/photo'
@@ -38,8 +38,20 @@ const MyGallery = () => {
                                     views={photos.map(x => ({
                                         ...x,
                                         srcset: x.srcSet,
-                                        caption: x.title
+                                        caption: <>{x.title}<br/>{x.author}<br/>{x.date}</>
                                     }))}
+                                    styles={{
+                                        view: base => ({
+                                            ...base,
+                                            alignItems: 'center',
+                                            display: 'flex ',
+                                            height: 'calc(100vh - 54px)',
+                                            justifyContent: 'center',
+                                            '& > img': {
+                                                maxHeight: 'calc(100vh - 90px)',
+                                            },
+                                        }),
+                                    }}
                                 />
                             </Modal>
                         ) : null}
