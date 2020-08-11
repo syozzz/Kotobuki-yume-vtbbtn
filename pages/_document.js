@@ -29,7 +29,7 @@ export default class MyDocument extends Document {
             <html>
                 <Head>
                     <meta name="referrer" content="never" />
-                    <link rel="icon" href="https://pic.imgdb.cn/item/5f2f9d3614195aa594c92bcf.jpg" />
+                    <link rel="icon" href="https://pic.imgdb.cn/item/5f3216b814195aa5948051bf.png" />
                 </Head>
                 <body>
                     <style global jsx>{`
