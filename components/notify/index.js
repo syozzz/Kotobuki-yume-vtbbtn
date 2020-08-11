@@ -89,7 +89,9 @@ const Notify = ({follower}) => {
     useEffect(() => {
         axios.get('/api/bilifuns')
             .then(function (response) {
-                setBiliFuns(response.data.data.follower)
+                if (response.data.code === 0) {
+                    setBiliFuns(response.data.data.follower)
+                }
             })
     }, [])
 
