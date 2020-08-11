@@ -1,6 +1,7 @@
 
 .avatarBox {
     text-align: right;
+    position: relative;
 }
 
 .descBox {

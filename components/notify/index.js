@@ -1,8 +1,31 @@
 import styled from 'styled-components'
-import styles from "../../styles/info.module.css";
+import styles from '../../styles/info.module.css'
 import {
     ClockCircleOutlined
 } from '@ant-design/icons'
+import {useEffect, useState} from 'react'
+import axios from 'axios'
+
+const BiliBiliBox = styled.div`
+  position: fixed;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  background: #1da1f2;
+  color: white;
+  border-left: none;
+  font-size: 14px;
+  left: 0;
+  top: 100px;
+  border-top-right-radius: 5px;  
+  -moz-border-radius-topright: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  
+  .ant-badge-count {
+    box-shadow: 0 0 0 0;
+  }
+`
 
 const NotifyBox = styled.div`
   color: rgba(0,0,0,.6);
@@ -59,20 +82,36 @@ const NotifyBox = styled.div`
   
 `
 
-const Notify = () => (
-    <div className={styles.notifyBox}>
-        <h4>
+const Notify = ({follower}) => {
+
+    const [ biliFuns, setBiliFuns ] = useState(0)
+
+    useEffect(() => {
+        axios.get('/api/bilifuns')
+            .then(function (response) {
+                setBiliFuns(response.data.data.follower)
+            })
+    }, [])
+
+    return (
+        <div className={styles.notifyBox}>
+            <h4>
             <span style={{position: 'relative', top: '1px', paddingRight: '3px'}}>
                 <ClockCircleOutlined style={{fontSize: '18px', color: '#1da1f2'}}/>
             </span>直播动态(beta)
-        </h4>
-        <NotifyBox>
-            【youtube】正在直播...
-        </NotifyBox>
-        <NotifyBox>
-            【bilibili】未开播
-        </NotifyBox>
-    </div>
-)
+            </h4>
+            <NotifyBox>
+                【youtube】正在直播...
+            </NotifyBox>
+            <NotifyBox>
+                【bilibili】未开播
+            </NotifyBox>
+            <BiliBiliBox>
+                bilibili fans: {biliFuns > 0 ? biliFuns : '-'}
+            </BiliBiliBox>
+        </div>
+    )
+
+}
 
 export default Notify
