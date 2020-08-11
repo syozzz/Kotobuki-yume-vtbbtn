@@ -55,16 +55,25 @@ const RoadMap = () => {
 
     const data = [
         {
+            id: '1',
             name: '评论重构为留言板功能',
             tags: ['新功能'],
             status: 1,
             progress: 5
         },
         {
+            id: '2',
             name: '图集功能重构，用户可上传',
             tags: ['新功能', '工作量大'],
             status: 0,
             progress: 0
+        },
+        {
+            id: '3',
+            name: '音声添加',
+            tags: ['持续'],
+            status: 1,
+            progress: 20
         }
     ]
 
@@ -76,15 +85,17 @@ const RoadMap = () => {
             </Head>
             <ContentBox style={{padding: '10px'}}>
                 <h4>todos</h4>
-                <Table columns={columns} dataSource={data} />
+                <Table columns={columns} dataSource={data} rowKey="id" />
                 <h4>更新记录</h4>
                 <div style={{marginTop: '20px'}}>
                     <Timeline>
                         <Timeline.Item>2020-08-10</Timeline.Item>
                         <Timeline.Item>&emsp;去除了 zeit-ui 依赖，所有页面用 antd 重构 </Timeline.Item>
                         <Timeline.Item>&emsp;删除评论，twitter 查看功能</Timeline.Item>
-                        <Timeline.Item>&emsp;图集页面修改页面布局，保证图片比例正常。</Timeline.Item>
-                        <Timeline.Item>&emsp;图集图片 view 功能改善，确保图片在屏幕范围内。</Timeline.Item>
+                        <Timeline.Item>&emsp;图集页面修改页面布局，保证图片比例正常</Timeline.Item>
+                        <Timeline.Item>&emsp;图集图片 view 功能改善，确保图片在屏幕范围内</Timeline.Item>
+                        <Timeline.Item>2020-08-11</Timeline.Item>
+                        <Timeline.Item>&emsp;第一批音声追加 </Timeline.Item>
                     </Timeline>
                 </div>
             </ContentBox>

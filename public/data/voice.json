@@ -1,0 +1,90 @@
+[
+  {
+    "group_key": "g_000",
+    "description": "萌",
+    "voice_list": [
+      {
+        "voice_key": "v_000_1",
+        "path": "/voice/v_000_1.mp3"
+      },
+      {
+        "voice_key": "v_000_2",
+        "path": "/voice/v_000_2.mp3"
+      },
+      {
+        "voice_key": "v_000_3",
+        "path": "/voice/v_000_3.mp3"
+      },
+      {
+        "voice_key": "v_000_4",
+        "path": "/voice/v_000_4.mp3"
+      }
+    ]
+  },
+  {
+    "group_key": "g_002",
+    "description": "整活",
+    "voice_list": [
+      {
+        "voice_key": "v_002_1",
+        "path": "/voice/v_002_1.mp3"
+      },
+      {
+        "voice_key": "v_002_2",
+        "path": "/voice/v_002_2.mp3"
+      }
+    ]
+  },
+  {
+    "group_key": "g_001",
+    "description": "武汉话",
+    "voice_list": [
+      {
+        "voice_key": "v_001_0",
+        "path": "/voice/v_001_0.mp3"
+      },
+      {
+        "voice_key": "v_001_1",
+        "path": "/voice/v_001_1.mp3"
+      },
+      {
+        "voice_key": "v_001_2",
+        "path": "/voice/v_001_2.mp3"
+      },
+      {
+        "voice_key": "v_001_3",
+        "path": "/voice/v_001_3.mp3"
+      },
+      {
+        "voice_key": "v_001_4",
+        "path": "/voice/v_001_4.mp3"
+      },
+      {
+        "voice_key": "v_001_5",
+        "path": "/voice/v_001_5.mp3"
+      },
+      {
+        "voice_key": "v_001_6",
+        "path": "/voice/v_001_6.mp3"
+      },
+      {
+        "voice_key": "v_001_7",
+        "path": "/voice/v_001_7.mp3"
+      }
+    ]
+  },
+  {
+    "group_key": "g_003",
+    "description": "片头片尾",
+    "voice_list": [
+      {
+        "voice_key": "v_003_1",
+        "path": "/voice/v_003_1.mp3"
+      },
+      {
+        "voice_key": "v_003_2",
+        "path": "/voice/v_003_2.mp3"
+      }
+    ]
+  }
+]

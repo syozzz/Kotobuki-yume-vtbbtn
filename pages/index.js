@@ -22,7 +22,7 @@ const Home = () => (
 )
 
 Home.getInitialProps = async () => ({
-    namespacesRequired: ['common', 'header', 'info']
+    namespacesRequired: ['common', 'header', 'info', 'voice']
 })
 
 export default withTranslation('common')(Home)

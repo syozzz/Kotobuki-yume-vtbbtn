@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 import { ContentBox } from '../common'
-import { useState } from 'react'
+import {useRef, useState} from 'react'
 import { Row, Col, Badge, Divider, Button, notification } from 'antd'
 import styles from '../../styles/btn.module.css'
+import data from '../../public/data/voice.json'
+import { withTranslation } from '../../i18n'
 
 const Box = styled.div`
   margin-top: 50px;
@@ -66,25 +68,15 @@ const Box = styled.div`
   }
 `
 
-const Btn = () => {
+const Btn = ({ t }) => {
 
-    const [ count, setCount ] = useState(0)
+    const [ currentVoice, setCurrentVoice ] = useState(null)
 
-    const clickHandler = () => {
-        setCount(count + 1);
-        if (count <= 2) {
-            notification.info({
-                key: 'test-alert',
-                message: '喂，别点了啊，铁咩！音声都还没呢',
-                placement: 'bottomRight'
-            })
-        } else {
-            notification.error({
-                key: 'test-alert',
-                message: '你再点爷摸了',
-                placement: 'bottomRight'
-            })
-        }
+    const radio = useRef(null)
+
+    const clickHandler = (voice) => {
+        radio.current.src = voice.path
+        radio.current.play()
     }
 
     return (
@@ -98,6 +90,7 @@ const Btn = () => {
                                     <div className="inner-box">
                                         <div className="content">
                                             播放器按钮界面 头秃施工中...
+                                            <audio ref={radio} src={currentVoice} />
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +99,7 @@ const Btn = () => {
                     </Col>
                     <Col xs={24} sm={11}>
                         <Row justify="center">
-                            <Col offset={2} span={20}>
+                            <Col span={20}>
                                 <div className="histroy-box">
                                     <h5>
                                         最近播放
@@ -133,126 +126,28 @@ const Btn = () => {
                         </Row>
                     </Col>
                 </Row>
-                <Row justify="center" style={{marginTop: '20px'}}>
-                    <Col span={24} style={{position: 'relative'}}>
-                        <h3>
-                            萌
-                        </h3>
-                        <Divider />
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声1
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声2
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声3
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声4
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声5
-                        </Button>
-                    </Col>
-                </Row>
-                <Row justify="center" style={{marginTop: '20px'}}>
-                    <Col span={24} style={{position: 'relative'}}>
-                        <h3>
-                            叫声
-                        </h3>
-                        <Divider />
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声1
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声2
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声3
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声4
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声5
-                        </Button>
-                    </Col>
-                </Row>
-                <Row justify="center" style={{marginTop: '20px'}}>
-                    <Col span={24} style={{position: 'relative'}}>
-                        <h3>
-                            打招呼
-                        </h3>
-                        <Divider />
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声1
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声2
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声3
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声4
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声5
-                        </Button>
-                    </Col>
-                </Row>
-                <Row justify="center" style={{marginTop: '20px'}}>
-                    <Col span={24} style={{position: 'relative'}}>
-                        <h3>
-                            语气
-                        </h3>
-                        <Divider />
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声1
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声2
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声3
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声4
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声5
-                        </Button>
-                    </Col>
-                </Row>
-                <Row justify="center" style={{marginTop: '20px'}}>
-                    <Col span={24} style={{position: 'relative'}}>
-                        <h3>
-                            其他
-                        </h3>
-                        <Divider />
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声1
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声2
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声3
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声4
-                        </Button>
-                        <Button className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler()}}>
-                            测试音声5
-                        </Button>
-                    </Col>
-                </Row>
+                {
+                    data.map(item => (
+                        <Row key={item.group_key} justify="center" style={{marginTop: '30px'}}>
+                            <Col span={24} style={{position: 'relative'}}>
+                                <h4>
+                                    {t(item.group_key)}
+                                </h4>
+                                <Divider  />
+                                {item.voice_list.map(voice => (
+                                    <Button key={voice.voice_key} className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler({...voice})}}>
+                                        {t(voice.voice_key)}
+                                    </Button>
+                                ))}
+                            </Col>
+                        </Row>
+                    ))
+                }
             </ContentBox>
         </Box>
     )
 }
 
 
+export default withTranslation('voice')(Btn)
 
-export default Btn

@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { withTranslation, i18n } from '../../i18n'
 import { Popover, Space } from 'antd'
 import styles from '../../styles/header.module.css'
-import Head from 'next/head'
 
 const TopBox = styled.div`
   height: 60px;
@@ -56,9 +55,6 @@ const popContent = () => (
 
 const Header = ({ t }) => (
     <TopBox>
-        <Head>
-            <script key="valine-call" type="text/javascript" src="/scripts/MiniValine.min.js"></script>
-        </Head>
         <div className="title-box">
             <span className="icon"></span>{t('title')}
         </div>

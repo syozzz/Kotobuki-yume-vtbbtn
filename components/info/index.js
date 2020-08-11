@@ -31,6 +31,7 @@ const ALink = styled.a`
 `
 
 const Info = ({ t }) => (
+
     <Row justify="center">
         <Col xs={24} sm={12}>
             <Row justify="center">
@@ -70,8 +71,12 @@ const Info = ({ t }) => (
                 </Col>
             </Row>
         </Col>
-        <Col xs={24} sm={10} offset={2}>
-           <NotifyBox/>
+        <Col xs={24} sm={12} >
+            <Row justify="center">
+                <Col span={11}>
+                    <NotifyBox/>
+                </Col>
+            </Row>
         </Col>
     </Row>
 )
