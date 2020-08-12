@@ -5,27 +5,7 @@ import {
 } from '@ant-design/icons'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-
-const BiliBiliBox = styled.div`
-  position: fixed;
-  height: 30px;
-  line-height: 30px;
-  padding: 0 10px;
-  background: #1da1f2;
-  color: white;
-  border-left: none;
-  font-size: 14px;
-  left: 0;
-  top: 100px;
-  border-top-right-radius: 5px;  
-  -moz-border-radius-topright: 5px;
-  border-bottom-right-radius: 5px;
-  -moz-border-radius-bottomright: 5px;
-  
-  .ant-badge-count {
-    box-shadow: 0 0 0 0;
-  }
-`
+import { Badge, Popover } from 'antd'
 
 const NotifyBox = styled.div`
   color: rgba(0,0,0,.6);
@@ -82,17 +62,27 @@ const NotifyBox = styled.div`
   
 `
 
-const Notify = ({follower}) => {
+const Notify = () => {
 
-    const [ biliFuns, setBiliFuns ] = useState(0)
+    const [ biliLive, setBiliLive ] = useState(undefined)
+    const [ ytbLive, setYtbLive ] = useState(undefined)
 
     useEffect(() => {
-        axios.get('/api/bilifuns')
+        axios.get('/api/live-bili')
             .then(function (response) {
                 if (response.data.code === 0) {
-                    setBiliFuns(response.data.data.follower)
+                    const {
+                        liveStatus,
+                        url,
+                        title,
+                        cover
+                    } = response.data.data
+                    if (liveStatus === 1) {
+                        setBiliLive({url, title, cover})
+                    }
                 }
             })
+
     }, [])
 
     return (
@@ -103,14 +93,22 @@ const Notify = ({follower}) => {
             </span>直播动态(beta)
             </h4>
             <NotifyBox>
-                【youtube】正在直播...
+                【youtube】{ytbLive ? '正在直播...' : '未开播'}
             </NotifyBox>
             <NotifyBox>
-                【bilibili】未开播
+                【bilibili】{biliLive ?
+                <Popover title={biliLive.title} placement="bottom" content={
+                    <div style={{
+                        height: '150px',
+                        width: '250px',
+                        background: `url(${biliLive.cover}) no-repeat center center`,
+                        backgroundSize: 'contain'
+                    }}></div>
+                }>
+                    <Badge status="processing" text={<a href={biliLive.url} target="_blank">直播中</a>} />
+                </Popover>
+                 : '未开播'}
             </NotifyBox>
-            <BiliBiliBox>
-                bilibili fans: {biliFuns > 0 ? biliFuns : '-'}
-            </BiliBiliBox>
         </div>
     )
 
