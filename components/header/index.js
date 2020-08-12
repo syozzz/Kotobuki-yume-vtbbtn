@@ -2,6 +2,37 @@ import styled from 'styled-components'
 import { withTranslation, i18n } from '../../i18n'
 import { Popover, Space } from 'antd'
 import styles from '../../styles/header.module.css'
+import {useEffect, useState} from "react";
+import axios from "axios";
+
+const FunsBox = styled.div`
+  position: fixed;
+  display: inline-block;
+  z-index: 1001;
+  height: 30px;
+  width: auto;
+  line-height: 30px;
+  padding: 0 10px;
+  color: white;
+  border-left: none;
+  font-size: 14px;
+  left: 0;
+  font-weight: bold;
+  border-top-right-radius: 5px;  
+  -moz-border-radius-topright: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  
+  &.bilibox {
+      background: #1da1f2;
+      top: 100px;
+  }
+  
+  &.ytbbox {
+      background: red;
+      top: 135px;
+  }
+`
 
 const TopBox = styled.div`
   height: 60px;
@@ -53,16 +84,58 @@ const popContent = () => (
     </div>
 )
 
-const Header = ({ t }) => (
-    <TopBox>
-        <div className="title-box">
-            <span className="icon"></span>{t('title')}
-        </div>
-        <div className="tools-box">
-            <Popover className={styles.topLink} content={popContent}>{t('language')}</Popover>
-            <a target="_blank" className={styles.topLink} href="https://github.com/syozzz/Kotobuki-yume-vtnbtn">{t('repo')}</a>
-        </div>
-    </TopBox>
-)
+const Header = ({ t }) => {
+
+    const [ biliFuns, setBiliFuns ] = useState(0)
+    const [ ytbFuns, setYtbFuns ] = useState(0)
+    const [ hide, setHide ] = useState(false)
+
+    useEffect(() => {
+        axios.get('/api/funs-bili')
+            .then(function (response) {
+                if (response.data.code === 0) {
+                    setBiliFuns(response.data.data.follower)
+                }
+            }).catch(function (e) {
+                console.error('/api/funs-bili 异常')
+            })
+        setTimeout(function () {
+            setHide(true)
+        }, 4000)
+    }, [])
+
+    useEffect(() => {
+        axios.get('/api/funs-ytb')
+            .then(function (response) {
+                if (response.data.code === 0) {
+                    if (response.data.items[0]) {
+                        setYtbFuns(response.data.items[0].statistics.subscriberCount)
+                    }
+                }
+            }).catch(function (e) {
+                console.error('/api/funs-ytb 异常')
+            })
+    }, [])
+
+    return (
+        <TopBox>
+            <div className="title-box">
+                <span className="icon"></span>{t('title')}
+            </div>
+            <div className="tools-box">
+                <Popover className={styles.topLink} content={popContent}>{t('language')}</Popover>
+                <a target="_blank" className={styles.topLink}
+                   href="https://github.com/syozzz/Kotobuki-yume-vtnbtn">{t('repo')}</a>
+            </div>
+            <FunsBox className={`bilibox ${hide ? 'animate__animated animate__lightSpeedOutLeft' : ''}`}>
+                bilibili fans: {biliFuns > 0 ? biliFuns : '-'}
+            </FunsBox>
+            <FunsBox className={`ytbbox ${hide ? 'animate__animated animate__lightSpeedOutLeft' : ''}`}>
+                youtube fans: {ytbFuns > 0 ? ytbFuns : '-'}
+            </FunsBox>
+        </TopBox>
+    )
+
+}
 
 export default withTranslation('header')(Header)

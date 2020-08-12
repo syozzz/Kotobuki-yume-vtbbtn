@@ -143,6 +143,7 @@ const Btn = ({ t }) => {
                         </Row>
                     ))
                 }
+                <div style={{height: '10px'}}></div>
             </ContentBox>
         </Box>
     )

@@ -96,6 +96,10 @@ const RoadMap = () => {
                         <Timeline.Item>&emsp;图集图片 view 功能改善，确保图片在屏幕范围内</Timeline.Item>
                         <Timeline.Item>2020-08-11</Timeline.Item>
                         <Timeline.Item>&emsp;第一批音声追加 </Timeline.Item>
+                        <Timeline.Item>2020-08-12</Timeline.Item>
+                        <Timeline.Item>&emsp;bilibili API 上线</Timeline.Item>
+                        <Timeline.Item>&emsp;youtube API 上线</Timeline.Item>
+                        <Timeline.Item>&emsp;showroom API 上线</Timeline.Item>
                     </Timeline>
                 </div>
             </ContentBox>
