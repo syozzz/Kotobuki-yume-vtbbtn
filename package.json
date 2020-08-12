@@ -9,6 +9,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "@next/bundle-analyzer": "^9.5.1",
+    "animate.css": "^4.1.0",
     "antd": "^4.5.3",
     "axios": "^0.19.2",
     "babel-plugin-import": "^1.13.0",
@@ -20,6 +21,7 @@
     "react-dom": "^16.13.0",
     "react-images": "^1.1.7",
     "react-photo-gallery": "^8.0.0",
+    "react-spring": "^8.0.27",
     "react-sticky": "^6.0.3",
     "styled-components": "^5.1.1"
   },

@@ -7,8 +7,10 @@ import axios from "axios";
 
 const FunsBox = styled.div`
   position: fixed;
+  display: inline-block;
   z-index: 1001;
   height: 30px;
+  width: auto;
   line-height: 30px;
   padding: 0 10px;
   color: white;
@@ -86,6 +88,7 @@ const Header = ({ t }) => {
 
     const [ biliFuns, setBiliFuns ] = useState(0)
     const [ ytbFuns, setYtbFuns ] = useState(0)
+    const [ hide, setHide ] = useState(false)
 
     useEffect(() => {
         axios.get('/api/funs-bili')
@@ -93,17 +96,24 @@ const Header = ({ t }) => {
                 if (response.data.code === 0) {
                     setBiliFuns(response.data.data.follower)
                 }
+            }).catch(function (e) {
+                console.error('/api/funs-bili 异常')
             })
+        setTimeout(function () {
+            setHide(true)
+        }, 4000)
     }, [])
 
     useEffect(() => {
         axios.get('/api/funs-ytb')
             .then(function (response) {
                 if (response.data.code === 0) {
-                    if (response.data.items) {
-                        setYtbFuns(response.data.items.statistics.subscriberCount)
+                    if (response.data.items[0]) {
+                        setYtbFuns(response.data.items[0].statistics.subscriberCount)
                     }
                 }
+            }).catch(function (e) {
+                console.error('/api/funs-ytb 异常')
             })
     }, [])
 
@@ -117,10 +127,10 @@ const Header = ({ t }) => {
                 <a target="_blank" className={styles.topLink}
                    href="https://github.com/syozzz/Kotobuki-yume-vtnbtn">{t('repo')}</a>
             </div>
-            <FunsBox className="bilibox">
+            <FunsBox className={`bilibox ${hide ? 'animate__animated animate__lightSpeedOutLeft' : ''}`}>
                 bilibili fans: {biliFuns > 0 ? biliFuns : '-'}
             </FunsBox>
-            <FunsBox className="ytbbox">
+            <FunsBox className={`ytbbox ${hide ? 'animate__animated animate__lightSpeedOutLeft' : ''}`}>
                 youtube fans: {ytbFuns > 0 ? ytbFuns : '-'}
             </FunsBox>
         </TopBox>

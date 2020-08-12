@@ -18,8 +18,8 @@ export default async (req, res) => {
             const response = await axios.get('http://api.live.bilibili.com/room/v1/Room/getRoomInfoOld?mid=442426299')
             if (response.data.hasOwnProperty('code') && response.data.code === 0) {
                 data = response.data
-                //直播状态缓存 5 分钟
-                cache.put(CACHE_KEY, data, 1000 * 60 * 5)
+                //直播状态缓存 2 分钟
+                cache.put(CACHE_KEY, data, 1000 * 60 * 2)
                 console.log("=======>刷新缓存: " + CACHE_KEY)
             }
         } else {

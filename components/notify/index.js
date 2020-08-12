@@ -65,7 +65,7 @@ const NotifyBox = styled.div`
 const Notify = () => {
 
     const [ biliLive, setBiliLive ] = useState(undefined)
-    const [ ytbLive, setYtbLive ] = useState(undefined)
+    const [ srLive, setSrLive ] = useState(undefined)
 
     useEffect(() => {
         axios.get('/api/live-bili')
@@ -81,8 +81,29 @@ const Notify = () => {
                         setBiliLive({url, title, cover})
                     }
                 }
+            }).catch(function (e) {
+                console.error('/api/live-bili 异常')
             })
 
+    }, [])
+
+    useEffect(() => {
+        axios.get('/api/live-sr')
+            .then(function (response) {
+                if (response.data.code === 0) {
+                    const {
+                        live_status,
+                        background_image_url,
+                        room_name,
+                        next_live_time
+                    } = response.data
+                    if (live_status != 1) {
+                        setSrLive({live_status, background_image_url, room_name, next_live_time})
+                    }
+                }
+            }).catch(function (e) {
+            console.error('/api/live-bili 异常')
+        })
     }, [])
 
     return (
@@ -93,7 +114,20 @@ const Notify = () => {
             </span>直播动态(beta)
             </h4>
             <NotifyBox>
-                【youtube】{ytbLive ? '正在直播...' : '未开播'}
+                【showroom】{!srLive ? '未开播' : srLive.live_status === 2 ?
+                <Popover title={srLive.room_name} placement="bottom" content={
+                    srLive.background_image_url ?
+                    <div style={{
+                        height: '150px',
+                        width: '250px',
+                        background: `url(${srLive.background_image_url}) no-repeat center center`,
+                        backgroundSize: 'contain'
+                    }}></div> : null
+                }>
+                    <Badge status="processing" text={<a href="https://www.showroom-live.com/kotobukiyume" target="_blank">直播中</a>} />
+                </Popover> :
+                <Badge status="default" text={<a href="https://www.showroom-live.com/kotobukiyume" target="_blank">预定直播：{srLive.next_live_time}</a>} />
+            }
             </NotifyBox>
             <NotifyBox>
                 【bilibili】{biliLive ?

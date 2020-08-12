@@ -7,6 +7,7 @@ import Router from 'next/router'
 import NProgress from 'nprogress'
 import '../styles/nprogress.css'
 import 'antd/dist/antd.min.css'
+import 'animate.css/animate.min.css'
 
 Router.onRouteChangeStart = url => {
     NProgress.start();
