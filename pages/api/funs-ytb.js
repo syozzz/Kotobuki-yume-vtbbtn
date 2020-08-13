@@ -26,6 +26,8 @@ export default async (req, res) => {
         }
         res.status(200).json(data || {code: 1})
     } catch (e) {
+        console.log('ytb 接口异常')
+        console.log(e)
         res.status(500).end()
     }
 }
