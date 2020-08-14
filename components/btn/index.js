@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import { ContentBox } from '../common'
 import {useRef, useState} from 'react'
-import { Row, Col, Badge, Divider, Button, notification } from 'antd'
-import styles from '../../styles/btn.module.css'
+import { Row, Col } from 'antd'
 import data from '../../public/data/voice.json'
 import { withTranslation } from '../../i18n'
+import List from './buttonlist'
+import Vlist from './videolist'
+
 
 const Box = styled.div`
   margin-top: 50px;
@@ -29,10 +31,17 @@ const Box = styled.div`
       .content {
         border-radius: 8px;
         border: 1px dashed #000000;
-        min-height: 135px;
+        height: 135px;
         padding: 3px;
-        display: flex;
-        align-items: center;
+        width: 100%;
+        
+        .btn {
+          cursor: pointer;
+        }
+        
+        .btn:hover {
+          
+        }
       }
     }
   }
@@ -47,8 +56,6 @@ const Box = styled.div`
     .histroy-list {
       color: #444;
       font-size: 14px;
-      max-height: 220px;
-      overflow: auto;
       margin-top: 10px;
       
       .list-item {
@@ -58,6 +65,7 @@ const Box = styled.div`
     }
     
     .clearBtn {
+      display: block;
       margin-top: 20px;
       color: #0070f3;
       font-size: 16px;
@@ -70,13 +78,18 @@ const Box = styled.div`
 
 const Btn = ({ t }) => {
 
-    const [ currentVoice, setCurrentVoice ] = useState(null)
-
     const radio = useRef(null)
+    //0顺序播放 1随机播放
+    const [ order, setOrder ] = useState(undefined)
+    const [ curIndex, setCurIndex ] = useState(0)
 
-    const clickHandler = (voice) => {
-        radio.current.src = voice.path
-        radio.current.play()
+
+    const orderPlayHandler = () => {
+
+    }
+
+    const endedHandler = () => {
+        console.log('完了')
     }
 
     return (
@@ -89,8 +102,18 @@ const Btn = ({ t }) => {
                                 <div className="container">
                                     <div className="inner-box">
                                         <div className="content">
-                                            播放器按钮界面 头秃施工中...
-                                            <audio ref={radio} src={currentVoice} />
+                                            <Row justify="center" style={{height: '100%'}}>
+                                                <Col className="btn" span={8} style={{borderRight: '1px dashed #000000'}}>
+
+                                                </Col>
+                                                <Col className="btn" span={8} style={{borderRight: '1px dashed #000000'}}>
+
+                                                </Col>
+                                                <Col className="btn" span={8}>
+
+                                                </Col>
+                                            </Row>
+                                            <audio id="yume-voice" onEnded={endedHandler} ref={radio} src="" />
                                         </div>
                                     </div>
                                 </div>
@@ -98,51 +121,10 @@ const Btn = ({ t }) => {
                         </Row>
                     </Col>
                     <Col xs={24} sm={11}>
-                        <Row justify="center">
-                            <Col span={20}>
-                                <div className="histroy-box">
-                                    <h5>
-                                        最近播放
-                                    </h5>
-                                    <div className="histroy-list">
-                                        <div className="list-item">
-                                            <Badge status="processing" text="语音11111111"/>
-                                        </div>
-                                        <div className="list-item">
-                                            <Badge status="processing" text="语音2222222"/>
-                                        </div>
-                                        <div className="list-item">
-                                            <Badge status="processing" text="语音3333333"/>
-                                        </div>
-                                        <div className="list-item">
-                                            <Badge status="processing" text="语音4444444"/>
-                                        </div>
-                                    </div>
-                                    <div className="clearBtn">
-                                        清空
-                                    </div>
-                                </div>
-                            </Col>
-                        </Row>
+                        <Vlist/>
                     </Col>
                 </Row>
-                {
-                    data.map(item => (
-                        <Row key={item.group_key} justify="center" style={{marginTop: '30px'}}>
-                            <Col span={24} style={{position: 'relative'}}>
-                                <h4>
-                                    {t(item.group_key)}
-                                </h4>
-                                <Divider  />
-                                {item.voice_list.map(voice => (
-                                    <Button key={voice.voice_key} className={styles.voiceBtn} type="primary" shape="round" size="large" onClick={() => {clickHandler({...voice})}}>
-                                        {t(voice.voice_key)}
-                                    </Button>
-                                ))}
-                            </Col>
-                        </Row>
-                    ))
-                }
+                <List data={data} radio={radio}/>
                 <div style={{height: '10px'}}></div>
             </ContentBox>
         </Box>
