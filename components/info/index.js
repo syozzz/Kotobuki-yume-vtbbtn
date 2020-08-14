@@ -36,7 +36,13 @@ const Info = ({ t }) => (
         <Col xs={24} sm={12}>
             <Row justify="center">
                 <Col span={11} className={styles.avatarBox}>
-                    <Avatar src="https://pic.imgdb.cn/item/5f26c4b214195aa594996403.jpg" size={88} />
+                    <Avatar
+                        style={{cursor: 'pointer'}}
+                        onClick={() => {
+                        const audio = document.getElementById('yume-voice')
+                        audio.src = '/voice/v_002_1.mp3'
+                        audio.play()
+                    }} src="https://pic.imgdb.cn/item/5f26c4b214195aa594996403.jpg" size={88} />
                 </Col>
                 <Col span={13}>
                     <div className={styles.descBox}>
