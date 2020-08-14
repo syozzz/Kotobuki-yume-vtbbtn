@@ -25,6 +25,8 @@ export default async (req, res) => {
         }
         res.status(200).json(data || {code: 1})
     } catch (e) {
+        console.error('sr live 接口异常')
+        console.error(e)
         res.status(500).end()
     }
 }
