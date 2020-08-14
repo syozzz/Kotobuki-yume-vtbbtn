@@ -96,9 +96,11 @@ const Header = ({ t }) => {
                 if (response.data.code === 0) {
                     setBiliFuns(response.data.data.follower)
                 }
+                setTimeout(function () {
+                    setHide(true)
+                }, 4000)
             }).catch(function (e) {
                 console.error('/api/funs-bili 异常')
-            }).finally(function () {
                 setTimeout(function () {
                     setHide(true)
                 }, 4000)
