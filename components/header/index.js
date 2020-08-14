@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { withTranslation, i18n } from '../../i18n'
 import { Popover, Space } from 'antd'
 import styles from '../../styles/header.module.css'
-import {useEffect, useState} from "react";
-import axios from "axios";
+import {useEffect, useState} from 'react'
+import axios from 'axios'
 
 const FunsBox = styled.div`
   position: fixed;
@@ -98,10 +98,11 @@ const Header = ({ t }) => {
                 }
             }).catch(function (e) {
                 console.error('/api/funs-bili 异常')
+            }).finally(function () {
+                setTimeout(function () {
+                    setHide(true)
+                }, 4000)
             })
-        setTimeout(function () {
-            setHide(true)
-        }, 4000)
     }, [])
 
     useEffect(() => {
