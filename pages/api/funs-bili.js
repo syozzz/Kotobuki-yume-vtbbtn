@@ -15,7 +15,7 @@ export default async (req, res) => {
     try {
         let data = cache.get(CACHE_KEY)
         if (!data) {
-            const response = await axios.get('http://api.bilibili.com/x/relation/stat?vmid=442426299')
+            const response = await axios.get('https://api.bilibili.com/x/relation/stat?vmid=442426299')
             if (response.data.hasOwnProperty('code') && response.data.code === 0) {
                 data = response.data
                 //缓存 1 分钟

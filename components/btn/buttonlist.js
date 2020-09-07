@@ -1,11 +1,12 @@
 import {Button, Col, Divider, Row} from "antd";
 import styles from "../../styles/btn.module.css";
 import { withTranslation } from '../../i18n'
+import AppConfig from '../config'
 
 const List = React.memo(({ t, data, radio }) => {
 
     const clickHandler = (voice) => {
-        radio.current.src = voice.path
+        radio.current.src = AppConfig.cdn + voice.path
         radio.current.play()
     }
 
