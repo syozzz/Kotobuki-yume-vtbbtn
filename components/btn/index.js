@@ -84,12 +84,13 @@ const Btn = ({ t }) => {
     const [ curIndex, setCurIndex ] = useState(0)
 
 
+
     const orderPlayHandler = () => {
 
     }
 
     const endedHandler = () => {
-        console.log('完了')
+
     }
 
     return (

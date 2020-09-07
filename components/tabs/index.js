@@ -46,10 +46,9 @@ const MyTabs = ({ t, router }) => (
                 Router.push(val)
             }}>
                 <TabPane tab={t('home')} key="/"/>
-                <TabPane tab={t('comment')} key="/comment"/>
-                <TabPane tab={t('gallery')} key="/gallery"/>
+                {/*<TabPane tab={t('comment')} key="/comment"/>
+                <TabPane tab={t('gallery')} key="/gallery"/>*/}
                 <TabPane tab={t('about')} key="/about"/>
-                <TabPane tab={t('todos')} key="/roadmap"/>
             </Tabs>
         </div>
     </Nav>
