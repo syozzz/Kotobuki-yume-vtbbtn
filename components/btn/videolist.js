@@ -26,7 +26,7 @@ const Vlist = React.memo(() => {
                             <div style={{
                                 height: '150px',
                                 width: '250px',
-                                background: `url(http:${item.pic}) no-repeat center center`,
+                                background: `url(https:${item.pic}) no-repeat center center`,
                                 backgroundSize: 'contain'
                             }}></div>
                         }>
